@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling==1.32.4"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ci-pipeline-test-upstream"
+version = "1.0.0"
+description = "A small Python package that stands in for an upstream open-source project in tests of manual forks, run from nodescout-systems/ci-config."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = []
+
+[project.scripts]
+ci-pipeline-test-upstream = "ci_pipeline_test_upstream:main"
+
+[dependency-groups]
+dev = ["pytest>=9.2"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

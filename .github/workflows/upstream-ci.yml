@@ -1,0 +1,20 @@
+name: upstream-ci
+
+# Stands in for an upstream project's own automation. It only reports where it ran,
+# so that a run in a fork's repository can be seen.
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report where this ran
+        run: echo "upstream-ci ran in ${{ github.repository }} on ${{ github.ref }} for ${{ github.event_name }}"
